@@ -12,7 +12,7 @@ app.use(cors());
 app.use(logger);
 
 
-app.get("/api/add_company", async (req, res) => {
+app.post("/api/add_company", async (req, res) => {
     if (req.headers["x-wx-source"]) {
         const data = req.body;
         data.openid = req.headers["x-wx-source"]
