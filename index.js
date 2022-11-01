@@ -1,4 +1,4 @@
-const mysql = require('/mysql')
+const mysql = require('/db')
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -27,7 +27,6 @@ res.send({a})
 const port = process.env.PORT || 80;
 
 async function bootstrap() {
-  await initDB();
   app.listen(port, () => {
     console.log("启动成功", port);
   });
