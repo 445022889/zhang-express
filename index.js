@@ -20,7 +20,7 @@ app.get("/api/add_company", async (req, res) => {
         const duplicates = await mysql.select("count(1)").from("company").where("company-name", data["company-name"]).queryValue()
         const must_in_arr = ["company-name", "company-area", "company-address", "company-master-name", "company-master-mobile", "company-main-brand", "company-type", "company-salesman", "company-construction-workers", "company-supervisors", "company-construction-workers", "expire-date"]
         for (const item of must_in_arr) {
-            if (!Object.keys(data).includes(item)) res.send({code: 0, msg: "请检查是否有遗漏项"})
+            if (!Object.keys(data).includes(item)) res.send({code: 0, msg: "您还有信息需要填写"})
         }
 
         if (duplicates === 1) {
