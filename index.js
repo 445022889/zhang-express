@@ -47,10 +47,10 @@ app.get("/api/test", async (req, res) => {
 
 // 小程序调用，获取微信 Open ID
 app.get("/api/wx_openid", async (req, res) => {
-  if (req.headers["x-wx-source"]) {
-    res.send({code:0,data:req.headers["x-wx-openid"]});
-  }
-  res.send({code:0,data:req.headers});
+  // if (req.headers["x-wx-source"]) {
+  //   res.send({code:0,data:req.headers["x-wx-openid"]});
+  // }
+  res.send({code:0,req:req.headers});
 
 });
 
