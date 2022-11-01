@@ -14,7 +14,7 @@ app.use(logger);
 
 app.get("/api/add_company", async (req, res) => {
   if (req.headers["x-wx-source"]) {
-    const { action } = req.body;
+    // const { action } = req.body;
 const a=await mysql.select("Counters").where(["id",1]).queryRow()
 res.send(a)
   }else {

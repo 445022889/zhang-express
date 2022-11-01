@@ -12,4 +12,5 @@ const mysql = new DbClient({
   database: 'golang_demo'
 })
 
+
 module.exports = mysql
