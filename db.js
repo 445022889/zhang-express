@@ -4,29 +4,14 @@ const { Sequelize, DataTypes } = require("sequelize");
 const { MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_ADDRESS = "" } = process.env;
 
 const [host, port] = MYSQL_ADDRESS.split(":");
+const DbClient = require('ali-mysql-client')
 
-const sequelize = new Sequelize("nodejs_demo", MYSQL_USERNAME, MYSQL_PASSWORD, {
-  host,
-  port,
-  dialect: "mysql" /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */,
-});
+const mysql = new DbClient({
+  host: host,
+  port:port,
+  user: MYSQL_USERNAME,
+  password: MYSQL_PASSWORD,
+  database: 'golang_demo'
+})
 
-// 定义数据模型
-const Counter = sequelize.define("Counter", {
-  count: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 1,
-  },
-});
-
-// 数据库初始化方法
-async function init() {
-  await Counter.sync({ alter: true });
-}
-
-// 导出初始化方法和模型
-module.exports = {
-  init,
-  Counter,
-};
+module.exports = mysql
